@@ -21,7 +21,7 @@
 - The baseline omits transaction costs, slippage, taxes, and liquidity constraints.
 - Equal-weight monthly rebalancing is only a framework smoke test.
 - The current report should not be used to imply regime-aware performance.
-- The license is still TBD before public release.
+- Future release tags still need explicit boundary checks.
 
 ## Required Before Stronger Claims
 

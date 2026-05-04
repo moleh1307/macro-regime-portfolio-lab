@@ -1,0 +1,50 @@
+monthly_features:
+  conservative_macro_lag_months: 1
+  market_features:
+    - name: spy_10m_trend
+      source: yfinance
+      ticker: SPY
+      definition: month_end_price_above_10_month_moving_average
+    - name: vix_3m_rank
+      source: fred
+      series: cboe_vix
+      definition: trailing_3_month_percentile_rank
+  macro_features:
+    - name: cpi_yoy
+      source: fred
+      series: cpi_all_urban_consumers
+      definition: twelve_month_percentage_change_lagged
+    - name: cpi_yoy_3m_change
+      source: fred
+      series: cpi_all_urban_consumers
+      definition: three_month_change_in_yoy_inflation_lagged
+    - name: unemployment_3m_change
+      source: fred
+      series: unemployment_rate
+      definition: three_month_change_lagged
+    - name: yield_curve_level
+      source: fred
+      series: ten_year_two_year_treasury_spread
+      definition: month_end_level_lagged
+    - name: yield_curve_3m_change
+      source: fred
+      series: ten_year_two_year_treasury_spread
+      definition: three_month_change_lagged
+    - name: fed_funds_3m_change
+      source: fred
+      series: effective_federal_funds_rate
+      definition: three_month_change_lagged
+
+first_regime_grid:
+  growth_axis:
+    improving_when:
+      - unemployment_3m_change <= 0
+      - spy_10m_trend == 1
+    weakening_when:
+      - unemployment_3m_change > 0
+      - spy_10m_trend == 0
+  inflation_axis:
+    easing_when:
+      - cpi_yoy_3m_change <= 0
+    rising_when:
+      - cpi_yoy_3m_change > 0

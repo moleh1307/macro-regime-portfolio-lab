@@ -56,6 +56,17 @@ Build the reproducible foundation:
 
 Outperformance, model selection, and regime-aware allocation are deliberately deferred until milestone 2+.
 
+## Milestone 2 Direction
+
+The next milestone adds the first regime-aware research layer:
+
+- monthly point-in-time macro/market feature table;
+- conservative lag rules for public macro data;
+- transparent four-state growth/inflation regime grid;
+- walk-forward evaluation protocol before any strategy claims.
+
+See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
+
 ## License
 
 MIT License.
