@@ -1,8 +1,8 @@
 # MRPL-004 - Initialize Local Git Baseline And Prepare GitHub Launch Boundary
 
 - Owner role: Founder / Chief of Staff
-- Status: active
-- Lifecycle state: Active
+- Status: done
+- Lifecycle state: Done
 - Risk lane: normal
 - Canonical artifact: local git repository
 
@@ -22,12 +22,16 @@
 
 ## Verification Evidence
 
-- Pending.
+- `git init` completed.
+- Initial commit created: `af6cbe7 Initialize macro regime portfolio lab`.
+- `git status --short` was clean after commit.
+- `git remote -v` returned no configured remote.
+- Raw cached data, `.venv`, pytest cache, ruff cache, and `__pycache__` are ignored.
 
 ## Blocker / Decision Needed
 
-- Decision needed later: public GitHub repo creation/push and license choice.
+- Historical: public GitHub repo creation/push and license choice moved to MRPL-005.
 
 ## Closeout State
 
-- Active.
+- Done.
