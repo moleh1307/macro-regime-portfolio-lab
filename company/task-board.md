@@ -6,7 +6,6 @@
 
 ## Ready
 
-- MRPL-007 - Implement monthly regime feature pipeline.
 - MRPL-008 - Implement walk-forward evaluation protocol.
 
 ## Waiting User Decision
@@ -21,6 +20,7 @@
 - MRPL-004 - Initialize local git baseline and prepare GitHub launch boundary.
 - MRPL-005 - Decide public GitHub creation/push and license.
 - MRPL-006 - Define milestone 2 regime feature and evaluation plan.
+- MRPL-007 - Implement monthly regime feature pipeline.
 
 ## Blocked
 

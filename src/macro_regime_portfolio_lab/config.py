@@ -37,3 +37,9 @@ def load_asset_universe(path: Path = CONFIG_DIR / "assets.yml") -> list[Asset]:
 
 def load_source_config(path: Path = CONFIG_DIR / "sources.yml") -> dict[str, Any]:
     return read_yaml(path)
+
+
+def load_regime_feature_config(
+    path: Path = CONFIG_DIR / "regime_features.yml",
+) -> dict[str, Any]:
+    return read_yaml(path)

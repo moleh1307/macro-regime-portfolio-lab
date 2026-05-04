@@ -40,9 +40,11 @@ uv sync
 uv run pytest
 uv run python scripts/fetch_data.py
 uv run python scripts/run_baseline_backtest.py
+uv run python scripts/build_features.py
 ```
 
 The baseline scripts write cached public data under `data/raw/` and a simple report under `artifacts/reports/`.
+The feature script writes the monthly point-in-time feature table under `data/processed/`.
 
 ## Milestone 1
 
@@ -66,6 +68,8 @@ The next milestone adds the first regime-aware research layer:
 - walk-forward evaluation protocol before any strategy claims.
 
 See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
+
+The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
 
 ## License
 
