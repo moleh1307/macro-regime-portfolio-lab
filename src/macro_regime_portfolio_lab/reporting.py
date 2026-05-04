@@ -79,6 +79,8 @@ allocation system.
 - Benchmark: monthly equal weight across the configured ETF universe.
 - Transaction costs: simple turnover cost diagnostic at {result.cost_bps:.1f} basis
   points per one-way turnover.
+- Turnover control: candidate basket must beat the previous basket by the
+  configured switch-score buffer before trading.
 - Evaluation period: {start} to {end}.
 
 ## Metrics

@@ -45,6 +45,7 @@ def run_regime_walk_forward(
     top_n: int = 3,
     fallback_asset: str = "SHY",
     cost_bps: float = 5.0,
+    switch_score_buffer: float = 0.10,
 ) -> WalkForwardResult:
     aligned_features, aligned_returns = align_features_and_next_returns(features, next_returns)
     asset_columns = list(aligned_returns.columns)
@@ -66,6 +67,12 @@ def run_regime_walk_forward(
             min_history=min_regime_history,
             top_n=top_n,
             fallback_asset=fallback_asset,
+        )
+        selected_assets = apply_switch_buffer(
+            previous_assets=assets_from_weight(previous_strategy_weight),
+            candidate_assets=selected_assets,
+            historical_returns=aligned_returns.loc[history_dates],
+            buffer=switch_score_buffer,
         )
         weight = equal_weight(selected_assets, asset_columns)
         realized_returns = aligned_returns.loc[signal_date].fillna(0.0)
@@ -93,6 +100,7 @@ def run_regime_walk_forward(
                 "equal_weight_cost": benchmark_cost,
                 "equal_weight_return_net": benchmark_return - benchmark_cost,
                 "training_observations": len(history_dates),
+                "switch_score_buffer": switch_score_buffer,
                 "selected_assets": ",".join(selected_assets),
             }
         )
@@ -155,6 +163,39 @@ def rank_assets_by_risk_adjusted_history(historical_returns: pd.DataFrame) -> pd
     volatility = historical_returns.std(numeric_only=True, ddof=0).replace(0.0, pd.NA)
     scores = (average_returns / volatility).dropna().sort_values(ascending=False)
     return scores
+
+
+def apply_switch_buffer(
+    previous_assets: list[str],
+    candidate_assets: list[str],
+    historical_returns: pd.DataFrame,
+    *,
+    buffer: float,
+) -> list[str]:
+    if not previous_assets or set(previous_assets) == set(candidate_assets):
+        return candidate_assets
+    previous_score = basket_score(previous_assets, historical_returns)
+    candidate_score = basket_score(candidate_assets, historical_returns)
+    if pd.isna(previous_score) or pd.isna(candidate_score):
+        return candidate_assets
+    if candidate_score > previous_score * (1.0 + buffer):
+        return candidate_assets
+    return previous_assets
+
+
+def basket_score(assets: list[str], historical_returns: pd.DataFrame) -> float:
+    valid_assets = [asset for asset in assets if asset in historical_returns.columns]
+    if not valid_assets or historical_returns.empty:
+        return float("nan")
+    basket_returns = historical_returns[valid_assets].mean(axis=1)
+    volatility = basket_returns.std(ddof=0)
+    if volatility == 0 or pd.isna(volatility):
+        return float("nan")
+    return float(basket_returns.mean() / volatility)
+
+
+def assets_from_weight(weight: pd.Series) -> list[str]:
+    return weight[weight > 0].index.tolist()
 
 
 def equal_weight(selected_assets: list[str], asset_columns: list[str]) -> pd.Series:

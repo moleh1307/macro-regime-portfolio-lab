@@ -3,6 +3,7 @@ import pytest
 
 from macro_regime_portfolio_lab.evaluation import (
     align_features_and_next_returns,
+    apply_switch_buffer,
     build_next_month_returns,
     calculate_turnover,
     rank_assets_by_risk_adjusted_history,
@@ -119,3 +120,40 @@ def test_walk_forward_records_net_returns_after_turnover_costs() -> None:
     assert "strategy_return_net" in result.returns.columns
     assert "equal_weight_return_net" in result.returns.columns
     assert result.returns["strategy_return_net"].le(result.returns["strategy_return"]).all()
+
+
+def test_switch_buffer_keeps_previous_assets_without_enough_score_improvement() -> None:
+    historical_returns = pd.DataFrame(
+        {
+            "SPY": [0.01, 0.01, 0.01, 0.02],
+            "QQQ": [0.011, 0.011, 0.011, 0.02],
+            "TLT": [0.012, 0.012, 0.012, 0.02],
+        }
+    )
+
+    selected = apply_switch_buffer(
+        previous_assets=["SPY"],
+        candidate_assets=["QQQ"],
+        historical_returns=historical_returns,
+        buffer=0.50,
+    )
+
+    assert selected == ["SPY"]
+
+
+def test_switch_buffer_accepts_large_score_improvement() -> None:
+    historical_returns = pd.DataFrame(
+        {
+            "SPY": [0.01, -0.01, 0.01, -0.01],
+            "QQQ": [0.02, 0.02, 0.02, 0.03],
+        }
+    )
+
+    selected = apply_switch_buffer(
+        previous_assets=["SPY"],
+        candidate_assets=["QQQ"],
+        historical_returns=historical_returns,
+        buffer=0.10,
+    )
+
+    assert selected == ["QQQ"]

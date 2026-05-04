@@ -17,24 +17,26 @@ allocation system.
 - Benchmark: monthly equal weight across the configured ETF universe.
 - Transaction costs: simple turnover cost diagnostic at 5.0 basis
   points per one-way turnover.
+- Turnover control: candidate basket must beat the previous basket by the
+  configured switch-score buffer before trading.
 - Evaluation period: 2008-05-31 to 2026-03-31.
 
 ## Metrics
 
 | Strategy | Metric | Value |
 | --- | --- | ---: |
-| regime_diagnostic | Annualized Return | 0.0762 |
-| regime_diagnostic | Annualized Volatility | 0.1149 |
-| regime_diagnostic | Sharpe Ratio | 0.6629 |
-| regime_diagnostic | Max Drawdown | -0.2964 |
+| regime_diagnostic | Annualized Return | 0.0607 |
+| regime_diagnostic | Annualized Volatility | 0.1026 |
+| regime_diagnostic | Sharpe Ratio | 0.5923 |
+| regime_diagnostic | Max Drawdown | -0.2789 |
 | equal_weight | Annualized Return | 0.0669 |
 | equal_weight | Annualized Volatility | 0.0970 |
 | equal_weight | Sharpe Ratio | 0.6903 |
 | equal_weight | Max Drawdown | -0.2789 |
-| regime_diagnostic_net | Annualized Return | 0.0751 |
-| regime_diagnostic_net | Annualized Volatility | 0.1149 |
-| regime_diagnostic_net | Sharpe Ratio | 0.6534 |
-| regime_diagnostic_net | Max Drawdown | -0.2965 |
+| regime_diagnostic_net | Annualized Return | 0.0605 |
+| regime_diagnostic_net | Annualized Volatility | 0.1026 |
+| regime_diagnostic_net | Sharpe Ratio | 0.5903 |
+| regime_diagnostic_net | Max Drawdown | -0.2789 |
 | equal_weight_net | Annualized Return | 0.0669 |
 | equal_weight_net | Annualized Volatility | 0.0970 |
 | equal_weight_net | Sharpe Ratio | 0.6901 |
@@ -53,7 +55,7 @@ allocation system.
 
 | Strategy | Average Monthly Turnover |
 | --- | ---: |
-| regime_diagnostic | 0.1733 |
+| regime_diagnostic | 0.0314 |
 | equal_weight | 0.0023 |
 
 ## Caveats
