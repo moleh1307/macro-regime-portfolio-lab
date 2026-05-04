@@ -43,3 +43,7 @@ def load_regime_feature_config(
     path: Path = CONFIG_DIR / "regime_features.yml",
 ) -> dict[str, Any]:
     return read_yaml(path)
+
+
+def load_validation_config(path: Path = CONFIG_DIR / "validation.yml") -> dict[str, Any]:
+    return read_yaml(path)

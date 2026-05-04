@@ -1,0 +1,29 @@
+split:
+  research_start: "2008-05-31"
+  research_end: "2021-12-31"
+  validation_start: "2022-01-31"
+
+selection:
+  rolling_window_months: 36
+  max_average_monthly_turnover: 0.12
+  cost_bps: 5.0
+  fallback_asset: SHY
+  switch_score_buffers:
+    - 0.00
+    - 0.05
+    - 0.10
+    - 0.20
+    - 0.50
+  min_regime_history_values:
+    - 12
+    - 24
+    - 36
+  top_n_values:
+    - 2
+    - 3
+    - 4
+
+benchmarks:
+  - equal_weight
+  - static_60_40
+  - shy

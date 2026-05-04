@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-018 - Implement validation protocol.
+- MRPL-019 - Review validation results.
 
 ## Waiting User Decision
 
@@ -31,6 +31,7 @@
 - MRPL-015 - Review post-stricter-regime diagnostics.
 - MRPL-016 - Add robustness review suite.
 - MRPL-017 - Design validation protocol.
+- MRPL-018 - Implement validation protocol.
 
 ## Blocked
 
