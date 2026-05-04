@@ -42,6 +42,7 @@ uv run python scripts/fetch_data.py
 uv run python scripts/run_baseline_backtest.py
 uv run python scripts/build_features.py
 uv run python scripts/run_walk_forward.py
+uv run python scripts/run_robustness_review.py
 ```
 
 The baseline scripts write cached public data under `data/raw/` and a simple report under `artifacts/reports/`.
@@ -74,7 +75,7 @@ See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
 The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
 The current walk-forward pipeline produces a diagnostic report and aligned return/weight tables. It is a protocol check, not a robustness claim.
 
-The current regime diagnostic review is in [Post-Stricter-Regime Diagnostic Review](docs/post-stricter-regime-diagnostic-review.md). It treats the stronger post-change metrics as promising but not claim-grade until robustness checks are added.
+The current regime diagnostic review is in [Post-Stricter-Regime Diagnostic Review](docs/post-stricter-regime-diagnostic-review.md), with follow-up robustness checks in [Robustness Review](docs/robustness-review.md). The robustness review treats the strategy evidence as promising research scaffolding, not a robust outperformance claim.
 
 ## License
 
