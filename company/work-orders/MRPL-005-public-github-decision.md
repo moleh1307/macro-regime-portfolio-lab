@@ -1,8 +1,8 @@
 # MRPL-005 - Decide Public GitHub Creation Push And License
 
 - Owner role: Founder / Chief of Staff
-- Status: waiting-user-decision
-- Lifecycle state: Decision Needed
+- Status: active
+- Lifecycle state: Active
 - Risk lane: high-risk
 - Canonical artifact: future GitHub repo/remote
 
@@ -12,24 +12,25 @@ Decide the public launch boundary:
 
 - whether to create `moleh1307/macro-regime-portfolio-lab` on GitHub;
 - whether the first push should be public or private;
-- which license to use before public release.
+- which license to use before public release;
+- create the GitHub repo and push `main`.
 
 ## Acceptance Criteria
 
-- Melih confirms public/private GitHub repo creation and push.
-- License is chosen or explicitly deferred with README wording kept honest.
-- Remote is configured only after confirmation.
+- Public GitHub repo creation and push are completed.
+- MIT license is added with README wording kept honest.
+- Remote is configured after Melih delegated the launch choice.
 - Public surfaces still avoid outperformance or investment-advice claims.
 
 ## Verification Evidence
 
-- Pending user decision.
+- Melih delegated the launch choice.
+- Founder selected public GitHub repo with MIT license.
 
 ## Blocker / Decision Needed
 
-- Decision needed: create/push GitHub repo now or keep local only.
-- Decision needed: license choice, likely MIT if Melih wants permissive portfolio default.
+- None.
 
 ## Closeout State
 
-- Decision Needed.
+- Active.

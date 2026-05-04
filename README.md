@@ -58,4 +58,4 @@ Outperformance, model selection, and regime-aware allocation are deliberately de
 
 ## License
 
-TBD before public release.
+MIT License.
