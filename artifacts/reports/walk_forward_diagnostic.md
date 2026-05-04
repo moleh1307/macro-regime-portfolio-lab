@@ -11,9 +11,9 @@ allocation system.
 - Signal date: month end.
 - Target return: next-month ETF return, aligned to the signal month.
 - Training rule: each signal uses only earlier rows with the same regime label.
-- Diagnostic allocation: top historical same-regime assets by average next-month
-  return, equal-weighted, with equal-weight fallback until enough same-regime
-  observations exist.
+- Diagnostic allocation: top historical same-regime assets by simple
+  risk-adjusted score, equal-weighted, with equal-weight fallback until enough
+  same-regime observations exist.
 - Benchmark: monthly equal weight across the configured ETF universe.
 - Transaction costs: simple turnover cost diagnostic at 5.0 basis
   points per one-way turnover.
@@ -23,18 +23,18 @@ allocation system.
 
 | Strategy | Metric | Value |
 | --- | --- | ---: |
-| regime_diagnostic | Annualized Return | 0.0941 |
-| regime_diagnostic | Annualized Volatility | 0.1391 |
-| regime_diagnostic | Sharpe Ratio | 0.6764 |
-| regime_diagnostic | Max Drawdown | -0.2804 |
+| regime_diagnostic | Annualized Return | 0.0762 |
+| regime_diagnostic | Annualized Volatility | 0.1149 |
+| regime_diagnostic | Sharpe Ratio | 0.6629 |
+| regime_diagnostic | Max Drawdown | -0.2964 |
 | equal_weight | Annualized Return | 0.0669 |
 | equal_weight | Annualized Volatility | 0.0970 |
 | equal_weight | Sharpe Ratio | 0.6903 |
 | equal_weight | Max Drawdown | -0.2789 |
-| regime_diagnostic_net | Annualized Return | 0.0933 |
-| regime_diagnostic_net | Annualized Volatility | 0.1391 |
-| regime_diagnostic_net | Sharpe Ratio | 0.6706 |
-| regime_diagnostic_net | Max Drawdown | -0.2807 |
+| regime_diagnostic_net | Annualized Return | 0.0751 |
+| regime_diagnostic_net | Annualized Volatility | 0.1149 |
+| regime_diagnostic_net | Sharpe Ratio | 0.6534 |
+| regime_diagnostic_net | Max Drawdown | -0.2965 |
 | equal_weight_net | Annualized Return | 0.0669 |
 | equal_weight_net | Annualized Volatility | 0.0970 |
 | equal_weight_net | Sharpe Ratio | 0.6901 |
@@ -53,7 +53,7 @@ allocation system.
 
 | Strategy | Average Monthly Turnover |
 | --- | ---: |
-| regime_diagnostic | 0.1236 |
+| regime_diagnostic | 0.1733 |
 | equal_weight | 0.0023 |
 
 ## Caveats

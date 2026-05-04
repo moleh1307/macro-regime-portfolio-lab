@@ -141,15 +141,20 @@ def select_assets_from_history(
     if len(historical_returns) < min_history:
         return asset_columns
 
-    average_returns = (
-        historical_returns.mean(numeric_only=True).dropna().sort_values(ascending=False)
-    )
-    positive_assets = average_returns[average_returns > 0].head(top_n).index.tolist()
-    if positive_assets:
-        return positive_assets
+    scores = rank_assets_by_risk_adjusted_history(historical_returns)
+    selected_assets = scores[scores > 0].head(top_n).index.tolist()
+    if selected_assets:
+        return selected_assets
     if fallback_asset in asset_columns:
         return [fallback_asset]
-    return average_returns.head(top_n).index.tolist()
+    return scores.head(top_n).index.tolist()
+
+
+def rank_assets_by_risk_adjusted_history(historical_returns: pd.DataFrame) -> pd.Series:
+    average_returns = historical_returns.mean(numeric_only=True)
+    volatility = historical_returns.std(numeric_only=True, ddof=0).replace(0.0, pd.NA)
+    scores = (average_returns / volatility).dropna().sort_values(ascending=False)
+    return scores
 
 
 def equal_weight(selected_assets: list[str], asset_columns: list[str]) -> pd.Series:

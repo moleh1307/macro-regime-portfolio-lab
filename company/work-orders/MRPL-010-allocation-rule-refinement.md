@@ -1,8 +1,8 @@
 # MRPL-010 - Refine Diagnostic Allocation Rule
 
 - Owner role: Quant Researcher / Replication QA
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Done
 - Risk lane: normal
 - Canonical artifact: `docs/allocation-rule-review.md`
 
@@ -24,7 +24,16 @@ Review and refine the current diagnostic allocation rule before making further p
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/allocation-rule-review.md`.
+- Replaced raw same-regime average-return ranking with same-regime risk-adjusted ranking: mean next-month return divided by monthly return volatility.
+- Preserved conservative top-3 equal-weight selection, 24-observation same-regime minimum, equal-weight warm-up fallback, and SHY fallback when all scores are non-positive.
+- Added a unit test showing the ranking penalizes high-volatility assets.
+- `uv run pytest`: 15 passed.
+- `uv run ruff check .`: all checks passed.
+- `uv run python scripts/run_walk_forward.py` completed.
+- Updated report wording to describe the risk-adjusted diagnostic rule.
+- Result after refinement: regime diagnostic net annualized return 0.0751, volatility 0.1149, Sharpe 0.6534, max drawdown -0.2965; equal-weight net annualized return 0.0669, volatility 0.0970, Sharpe 0.6901, max drawdown -0.2789.
+- Average monthly turnover increased to 0.1733 for the regime diagnostic versus 0.0023 for equal weight.
 
 ## Blocker / Decision Needed
 
@@ -32,4 +41,4 @@ Review and refine the current diagnostic allocation rule before making further p
 
 ## Closeout State
 
-- Ready.
+- Done.

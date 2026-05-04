@@ -23,8 +23,8 @@ prior next-month returns. The first implementation uses same-regime history:
 
 1. identify the current month-end regime;
 2. find earlier rows with the same regime;
-3. compute average next-month ETF returns using only those earlier rows;
-4. equal-weight the top assets by historical average return;
+3. compute a simple same-regime risk-adjusted score using only those earlier rows;
+4. equal-weight the top assets by historical risk-adjusted score;
 5. fall back to equal-weight until enough same-regime observations exist.
 
 The default minimum same-regime history is 24 observations.

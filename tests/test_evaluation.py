@@ -5,6 +5,7 @@ from macro_regime_portfolio_lab.evaluation import (
     align_features_and_next_returns,
     build_next_month_returns,
     calculate_turnover,
+    rank_assets_by_risk_adjusted_history,
     run_regime_walk_forward,
     turnover_cost,
 )
@@ -74,6 +75,19 @@ def test_walk_forward_training_excludes_current_signal_row() -> None:
     assert result.returns.loc[dates[-1], "selected_assets"] == "SPY"
     assert result.weights.loc[dates[-1], "SPY"] == 1.0
     assert result.weights.loc[dates[-1], "TLT"] == 0.0
+
+
+def test_risk_adjusted_ranking_penalizes_high_volatility_assets() -> None:
+    historical_returns = pd.DataFrame(
+        {
+            "SMOOTH": [0.01, 0.011, 0.012, 0.01],
+            "JUMPY": [0.05, -0.04, 0.06, -0.03],
+        }
+    )
+
+    scores = rank_assets_by_risk_adjusted_history(historical_returns)
+
+    assert scores.index[0] == "SMOOTH"
 
 
 def test_turnover_and_cost_are_half_l1_weight_change() -> None:

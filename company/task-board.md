@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-010 - Refine diagnostic allocation rule.
+- MRPL-011 - Add turnover control and cost sensitivity review.
 
 ## Waiting User Decision
 
@@ -23,6 +23,7 @@
 - MRPL-007 - Implement monthly regime feature pipeline.
 - MRPL-008 - Implement walk-forward evaluation protocol.
 - MRPL-009 - Add transaction cost and turnover diagnostics.
+- MRPL-010 - Refine diagnostic allocation rule.
 
 ## Blocked
 
