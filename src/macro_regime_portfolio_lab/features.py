@@ -123,9 +123,9 @@ def build_monthly_features(
 
 
 def classify_growth_regime(unemployment_change: pd.Series, spy_trend: pd.Series) -> pd.Series:
-    improving_votes = (unemployment_change <= 0).astype(int) + (spy_trend == 1).astype(int)
+    improving_growth = (unemployment_change <= 0) & (spy_trend == 1)
     return pd.Series(
-        ["improving_growth" if votes >= 1 else "weakening_growth" for votes in improving_votes],
+        ["improving_growth" if value else "weakening_growth" for value in improving_growth],
         index=unemployment_change.index,
         dtype="string",
     )

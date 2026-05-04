@@ -2,6 +2,7 @@ import pandas as pd
 
 from macro_regime_portfolio_lab.features import (
     build_monthly_features,
+    classify_growth_regime,
     latest_complete_month_end,
     to_month_end,
 )
@@ -71,6 +72,21 @@ def test_monthly_features_forward_fill_macro_before_lagging() -> None:
 
     assert pd.Timestamp("2020-06-30") in features.index
     assert pd.notna(features.loc[pd.Timestamp("2020-06-30"), "unemployment_3m_change"])
+
+
+def test_growth_regime_requires_labor_and_market_confirmation() -> None:
+    dates = pd.date_range("2021-01-31", periods=4, freq="ME")
+    unemployment_change = pd.Series([-0.1, -0.1, 0.2, 0.2], index=dates)
+    spy_trend = pd.Series([1, 0, 1, 0], index=dates)
+
+    growth_regime = classify_growth_regime(unemployment_change, spy_trend)
+
+    assert growth_regime.to_list() == [
+        "improving_growth",
+        "weakening_growth",
+        "weakening_growth",
+        "weakening_growth",
+    ]
 
 
 def test_latest_complete_month_end_drops_partial_current_month() -> None:

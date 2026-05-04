@@ -6,6 +6,17 @@ MRPL-013 reviews whether the current four-state regime definition is strong enou
 
 This is a methodology review, not a performance exercise. The goal is to improve label quality before doing more allocation-rule work.
 
+## Implementation Status
+
+MRPL-014 implemented the recommended stricter growth rule as the active milestone default:
+
+```text
+growth = improving if unemployment_3m_change <= 0 AND spy_10m_trend == 1
+otherwise weakening
+```
+
+The historical OR-rule counts below are retained as review evidence for why the change was made.
+
 ## Current Definition
 
 The current regime grid has two axes:

@@ -25,17 +25,17 @@ allocation system.
 
 | Strategy | Metric | Value |
 | --- | --- | ---: |
-| regime_diagnostic | Annualized Return | 0.0607 |
-| regime_diagnostic | Annualized Volatility | 0.1026 |
-| regime_diagnostic | Sharpe Ratio | 0.5923 |
+| regime_diagnostic | Annualized Return | 0.0788 |
+| regime_diagnostic | Annualized Volatility | 0.1055 |
+| regime_diagnostic | Sharpe Ratio | 0.7464 |
 | regime_diagnostic | Max Drawdown | -0.2789 |
 | equal_weight | Annualized Return | 0.0669 |
 | equal_weight | Annualized Volatility | 0.0970 |
 | equal_weight | Sharpe Ratio | 0.6903 |
 | equal_weight | Max Drawdown | -0.2789 |
-| regime_diagnostic_net | Annualized Return | 0.0605 |
-| regime_diagnostic_net | Annualized Volatility | 0.1026 |
-| regime_diagnostic_net | Sharpe Ratio | 0.5903 |
+| regime_diagnostic_net | Annualized Return | 0.0780 |
+| regime_diagnostic_net | Annualized Volatility | 0.1055 |
+| regime_diagnostic_net | Sharpe Ratio | 0.7392 |
 | regime_diagnostic_net | Max Drawdown | -0.2789 |
 | equal_weight_net | Annualized Return | 0.0669 |
 | equal_weight_net | Annualized Volatility | 0.0970 |
@@ -46,16 +46,16 @@ allocation system.
 
 | Regime | Months |
 | --- | ---: |
-| improving_growth_easing_inflation | 99 |
-| improving_growth_rising_inflation | 100 |
-| weakening_growth_easing_inflation | 11 |
-| weakening_growth_rising_inflation | 5 |
+| improving_growth_easing_inflation | 59 |
+| improving_growth_rising_inflation | 70 |
+| weakening_growth_easing_inflation | 51 |
+| weakening_growth_rising_inflation | 35 |
 
 ## Turnover Diagnostic
 
 | Strategy | Average Monthly Turnover |
 | --- | ---: |
-| regime_diagnostic | 0.0314 |
+| regime_diagnostic | 0.1182 |
 | equal_weight | 0.0023 |
 
 ## Caveats

@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-014 - Implement stricter growth regime definition.
+- MRPL-015 - Review post-stricter-regime diagnostics.
 
 ## Waiting User Decision
 
@@ -27,6 +27,7 @@
 - MRPL-011 - Add turnover control and cost sensitivity review.
 - MRPL-012 - Run parameter sensitivity grid.
 - MRPL-013 - Review regime definition.
+- MRPL-014 - Implement stricter growth regime definition.
 
 ## Blocked
 

@@ -37,13 +37,14 @@ monthly_features:
 
 first_regime_grid:
   growth_axis:
+    logic: both_conditions_required_for_improving_else_weakening
     improving_when:
       - unemployment_3m_change <= 0
       - spy_10m_trend == 1
     weakening_when:
-      - unemployment_3m_change > 0
-      - spy_10m_trend == 0
+      - unemployment_3m_change > 0 OR spy_10m_trend == 0
   inflation_axis:
+    logic: binary_threshold
     easing_when:
       - cpi_yoy_3m_change <= 0
     rising_when:
