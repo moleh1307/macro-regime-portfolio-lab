@@ -14,6 +14,7 @@ class WalkForwardResult:
     weights: pd.DataFrame
     metrics: dict[str, dict[str, float]]
     regime_counts: dict[str, int]
+    cost_bps: float
 
 
 def build_next_month_returns(prices: pd.DataFrame) -> pd.DataFrame:
@@ -43,11 +44,15 @@ def run_regime_walk_forward(
     min_regime_history: int = 24,
     top_n: int = 3,
     fallback_asset: str = "SHY",
+    cost_bps: float = 5.0,
 ) -> WalkForwardResult:
     aligned_features, aligned_returns = align_features_and_next_returns(features, next_returns)
     asset_columns = list(aligned_returns.columns)
     records = []
     weights = []
+
+    previous_strategy_weight = pd.Series(0.0, index=asset_columns)
+    previous_benchmark_weight = pd.Series(0.0, index=asset_columns)
 
     for signal_date in aligned_features.index:
         regime = str(aligned_features.loc[signal_date, "regime"])
@@ -70,18 +75,30 @@ def run_regime_walk_forward(
             asset_columns,
         )
         benchmark_return = float((benchmark_weight * realized_returns).sum())
+        strategy_turnover = calculate_turnover(previous_strategy_weight, weight)
+        benchmark_turnover = calculate_turnover(previous_benchmark_weight, benchmark_weight)
+        strategy_cost = turnover_cost(strategy_turnover, cost_bps)
+        benchmark_cost = turnover_cost(benchmark_turnover, cost_bps)
 
         records.append(
             {
                 "date": signal_date,
                 "regime": regime,
                 "strategy_return": strategy_return,
+                "strategy_turnover": strategy_turnover,
+                "strategy_cost": strategy_cost,
+                "strategy_return_net": strategy_return - strategy_cost,
                 "equal_weight_return": benchmark_return,
+                "equal_weight_turnover": benchmark_turnover,
+                "equal_weight_cost": benchmark_cost,
+                "equal_weight_return_net": benchmark_return - benchmark_cost,
                 "training_observations": len(history_dates),
                 "selected_assets": ",".join(selected_assets),
             }
         )
         weights.append(pd.Series(weight, name=signal_date))
+        previous_strategy_weight = weight
+        previous_benchmark_weight = benchmark_weight
 
     returns = pd.DataFrame.from_records(records).set_index("date")
     weight_frame = pd.DataFrame(weights)
@@ -95,12 +112,21 @@ def run_regime_walk_forward(
             returns["equal_weight_return"],
             periods_per_year=MONTHS_PER_YEAR,
         ),
+        "regime_diagnostic_net": calculate_metrics(
+            returns["strategy_return_net"],
+            periods_per_year=MONTHS_PER_YEAR,
+        ),
+        "equal_weight_net": calculate_metrics(
+            returns["equal_weight_return_net"],
+            periods_per_year=MONTHS_PER_YEAR,
+        ),
     }
     return WalkForwardResult(
         returns=returns,
         weights=weight_frame,
         metrics=metrics,
         regime_counts=returns["regime"].value_counts().sort_index().to_dict(),
+        cost_bps=cost_bps,
     )
 
 
@@ -133,3 +159,12 @@ def equal_weight(selected_assets: list[str], asset_columns: list[str]) -> pd.Ser
         return weight
     weight.loc[valid_assets] = 1.0 / len(valid_assets)
     return weight
+
+
+def calculate_turnover(previous_weight: pd.Series, current_weight: pd.Series) -> float:
+    aligned_previous, aligned_current = previous_weight.align(current_weight, fill_value=0.0)
+    return float((aligned_current - aligned_previous).abs().sum() / 2.0)
+
+
+def turnover_cost(turnover: float, cost_bps: float) -> float:
+    return float(turnover * cost_bps / 10_000.0)

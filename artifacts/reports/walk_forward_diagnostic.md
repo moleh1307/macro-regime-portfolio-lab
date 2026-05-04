@@ -15,7 +15,8 @@ allocation system.
   return, equal-weighted, with equal-weight fallback until enough same-regime
   observations exist.
 - Benchmark: monthly equal weight across the configured ETF universe.
-- Transaction costs: not modeled.
+- Transaction costs: simple turnover cost diagnostic at 5.0 basis
+  points per one-way turnover.
 - Evaluation period: 2008-05-31 to 2026-03-31.
 
 ## Metrics
@@ -30,6 +31,14 @@ allocation system.
 | equal_weight | Annualized Volatility | 0.0970 |
 | equal_weight | Sharpe Ratio | 0.6903 |
 | equal_weight | Max Drawdown | -0.2789 |
+| regime_diagnostic_net | Annualized Return | 0.0933 |
+| regime_diagnostic_net | Annualized Volatility | 0.1391 |
+| regime_diagnostic_net | Sharpe Ratio | 0.6706 |
+| regime_diagnostic_net | Max Drawdown | -0.2807 |
+| equal_weight_net | Annualized Return | 0.0669 |
+| equal_weight_net | Annualized Volatility | 0.0970 |
+| equal_weight_net | Sharpe Ratio | 0.6901 |
+| equal_weight_net | Max Drawdown | -0.2789 |
 
 ## Regime Counts
 
@@ -40,13 +49,20 @@ allocation system.
 | weakening_growth_easing_inflation | 11 |
 | weakening_growth_rising_inflation | 5 |
 
+## Turnover Diagnostic
+
+| Strategy | Average Monthly Turnover |
+| --- | ---: |
+| regime_diagnostic | 0.1236 |
+| equal_weight | 0.0023 |
+
 ## Caveats
 
 - This protocol is designed to catch alignment and leakage problems before
   stronger strategy research.
 - The diagnostic allocation is intentionally simple and should not be treated as
   a final investment model.
-- It does not include transaction costs, slippage, taxes, liquidity limits, or
-  exact macro-release calendars.
+- The transaction-cost adjustment is a simple turnover diagnostic; it does not
+  model slippage, taxes, liquidity limits, or exact macro-release calendars.
 - Any apparent performance difference requires further robustness checks before
   being used in public claims.

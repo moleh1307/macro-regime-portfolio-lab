@@ -56,6 +56,8 @@ def write_walk_forward_report(result: WalkForwardResult, output_path: Path) -> N
         f"| {regime} | {count} |" for regime, count in result.regime_counts.items()
     )
     metrics_table = "\n".join(metrics_rows)
+    average_strategy_turnover = result.returns["strategy_turnover"].mean()
+    average_equal_weight_turnover = result.returns["equal_weight_turnover"].mean()
     start = result.returns.index.min().date()
     end = result.returns.index.max().date()
     content = f"""# Walk-Forward Regime Evaluation Diagnostic
@@ -75,7 +77,8 @@ allocation system.
   return, equal-weighted, with equal-weight fallback until enough same-regime
   observations exist.
 - Benchmark: monthly equal weight across the configured ETF universe.
-- Transaction costs: not modeled.
+- Transaction costs: simple turnover cost diagnostic at {result.cost_bps:.1f} basis
+  points per one-way turnover.
 - Evaluation period: {start} to {end}.
 
 ## Metrics
@@ -90,14 +93,21 @@ allocation system.
 | --- | ---: |
 {regime_rows}
 
+## Turnover Diagnostic
+
+| Strategy | Average Monthly Turnover |
+| --- | ---: |
+| regime_diagnostic | {average_strategy_turnover:.4f} |
+| equal_weight | {average_equal_weight_turnover:.4f} |
+
 ## Caveats
 
 - This protocol is designed to catch alignment and leakage problems before
   stronger strategy research.
 - The diagnostic allocation is intentionally simple and should not be treated as
   a final investment model.
-- It does not include transaction costs, slippage, taxes, liquidity limits, or
-  exact macro-release calendars.
+- The transaction-cost adjustment is a simple turnover diagnostic; it does not
+  model slippage, taxes, liquidity limits, or exact macro-release calendars.
 - Any apparent performance difference requires further robustness checks before
   being used in public claims.
 """

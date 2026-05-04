@@ -6,7 +6,7 @@
 
 ## Ready
 
-- None.
+- MRPL-010 - Refine diagnostic allocation rule.
 
 ## Waiting User Decision
 
@@ -22,6 +22,7 @@
 - MRPL-006 - Define milestone 2 regime feature and evaluation plan.
 - MRPL-007 - Implement monthly regime feature pipeline.
 - MRPL-008 - Implement walk-forward evaluation protocol.
+- MRPL-009 - Add transaction cost and turnover diagnostics.
 
 ## Blocked
 

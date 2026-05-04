@@ -4,7 +4,9 @@ import pytest
 from macro_regime_portfolio_lab.evaluation import (
     align_features_and_next_returns,
     build_next_month_returns,
+    calculate_turnover,
     run_regime_walk_forward,
+    turnover_cost,
 )
 
 
@@ -72,3 +74,34 @@ def test_walk_forward_training_excludes_current_signal_row() -> None:
     assert result.returns.loc[dates[-1], "selected_assets"] == "SPY"
     assert result.weights.loc[dates[-1], "SPY"] == 1.0
     assert result.weights.loc[dates[-1], "TLT"] == 0.0
+
+
+def test_turnover_and_cost_are_half_l1_weight_change() -> None:
+    previous = pd.Series({"SPY": 0.5, "TLT": 0.5})
+    current = pd.Series({"SPY": 1.0, "TLT": 0.0})
+
+    turnover = calculate_turnover(previous, current)
+
+    assert turnover == pytest.approx(0.5)
+    assert turnover_cost(turnover, cost_bps=10.0) == pytest.approx(0.0005)
+
+
+def test_walk_forward_records_net_returns_after_turnover_costs() -> None:
+    dates = pd.date_range("2020-01-31", periods=3, freq="ME")
+    features = pd.DataFrame({"regime": ["same", "same", "same"]}, index=dates)
+    next_returns = pd.DataFrame(
+        {"SPY": [0.01, 0.02, 0.03], "TLT": [0.01, 0.01, 0.01]},
+        index=dates,
+    )
+
+    result = run_regime_walk_forward(
+        features,
+        next_returns,
+        min_regime_history=1,
+        top_n=1,
+        cost_bps=10.0,
+    )
+
+    assert "strategy_return_net" in result.returns.columns
+    assert "equal_weight_return_net" in result.returns.columns
+    assert result.returns["strategy_return_net"].le(result.returns["strategy_return"]).all()
