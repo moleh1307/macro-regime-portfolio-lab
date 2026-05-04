@@ -41,10 +41,12 @@ uv run pytest
 uv run python scripts/fetch_data.py
 uv run python scripts/run_baseline_backtest.py
 uv run python scripts/build_features.py
+uv run python scripts/run_walk_forward.py
 ```
 
 The baseline scripts write cached public data under `data/raw/` and a simple report under `artifacts/reports/`.
 The feature script writes the monthly point-in-time feature table under `data/processed/`.
+The walk-forward script writes diagnostic evaluation artifacts under `artifacts/reports/`.
 
 ## Milestone 1
 
@@ -70,6 +72,7 @@ The next milestone adds the first regime-aware research layer:
 See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
 
 The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
+The current walk-forward pipeline produces a diagnostic report and aligned return/weight tables. It is a protocol check, not a robustness claim.
 
 ## License
 

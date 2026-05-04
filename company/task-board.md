@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-008 - Implement walk-forward evaluation protocol.
+- None.
 
 ## Waiting User Decision
 
@@ -21,6 +21,7 @@
 - MRPL-005 - Decide public GitHub creation/push and license.
 - MRPL-006 - Define milestone 2 regime feature and evaluation plan.
 - MRPL-007 - Implement monthly regime feature pipeline.
+- MRPL-008 - Implement walk-forward evaluation protocol.
 
 ## Blocked
 

@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 
 TRADING_DAYS_PER_YEAR = 252
+MONTHS_PER_YEAR = 12
 
 
 @dataclass(frozen=True)
@@ -49,7 +50,10 @@ def monthly_equal_weight_returns(prices: pd.DataFrame) -> BacktestResult:
     )
 
 
-def calculate_metrics(returns: pd.Series) -> dict[str, float]:
+def calculate_metrics(
+    returns: pd.Series,
+    periods_per_year: int = TRADING_DAYS_PER_YEAR,
+) -> dict[str, float]:
     returns = returns.dropna()
     if returns.empty:
         return {
@@ -60,9 +64,9 @@ def calculate_metrics(returns: pd.Series) -> dict[str, float]:
         }
 
     equity = (1.0 + returns).cumprod()
-    years = len(returns) / TRADING_DAYS_PER_YEAR
+    years = len(returns) / periods_per_year
     annualized_return = equity.iloc[-1] ** (1.0 / years) - 1.0 if years > 0 else 0.0
-    annualized_volatility = returns.std(ddof=0) * np.sqrt(TRADING_DAYS_PER_YEAR)
+    annualized_volatility = returns.std(ddof=0) * np.sqrt(periods_per_year)
     sharpe_ratio = (
         annualized_return / annualized_volatility if annualized_volatility > 0 else 0.0
     )

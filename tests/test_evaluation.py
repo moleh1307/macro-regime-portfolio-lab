@@ -1,0 +1,74 @@
+import pandas as pd
+import pytest
+
+from macro_regime_portfolio_lab.evaluation import (
+    align_features_and_next_returns,
+    build_next_month_returns,
+    run_regime_walk_forward,
+)
+
+
+def test_next_month_returns_are_indexed_by_signal_month() -> None:
+    prices = pd.DataFrame(
+        {"SPY": [100.0, 110.0, 99.0]},
+        index=pd.to_datetime(["2020-01-31", "2020-02-29", "2020-03-31"]),
+    )
+
+    returns = build_next_month_returns(prices)
+
+    assert returns.loc[pd.Timestamp("2020-01-31"), "SPY"] == pytest.approx(0.10)
+    assert returns.loc[pd.Timestamp("2020-02-29"), "SPY"] == pytest.approx(-0.10)
+    assert pd.Timestamp("2020-03-31") not in returns.index
+
+
+def test_next_month_returns_drop_partial_target_month() -> None:
+    prices = pd.DataFrame(
+        {"SPY": [100.0, 110.0, 121.0]},
+        index=pd.to_datetime(["2020-01-31", "2020-02-29", "2020-03-03"]),
+    )
+
+    returns = build_next_month_returns(prices)
+
+    assert list(returns.index) == [pd.Timestamp("2020-01-31")]
+
+
+def test_alignment_keeps_only_shared_signal_dates() -> None:
+    dates = pd.date_range("2020-01-31", periods=3, freq="ME")
+    features = pd.DataFrame({"regime": ["a", "a", "b"]}, index=dates)
+    next_returns = pd.DataFrame({"SPY": [0.1, 0.2]}, index=dates[:2])
+
+    aligned_features, aligned_returns = align_features_and_next_returns(
+        features,
+        next_returns,
+    )
+
+    assert list(aligned_features.index) == list(dates[:2])
+    assert list(aligned_returns.index) == list(dates[:2])
+
+
+def test_walk_forward_training_excludes_current_signal_row() -> None:
+    dates = pd.date_range("2020-01-31", periods=4, freq="ME")
+    features = pd.DataFrame(
+        {"regime": ["same", "same", "same", "same"]},
+        index=dates,
+    )
+    next_returns = pd.DataFrame(
+        {
+            "SPY": [0.10, 0.10, 0.10, -0.50],
+            "TLT": [-0.10, -0.10, -0.10, 0.50],
+        },
+        index=dates,
+    )
+
+    result = run_regime_walk_forward(
+        features,
+        next_returns,
+        min_regime_history=1,
+        top_n=1,
+        fallback_asset="TLT",
+    )
+
+    # At the final signal, current-row TLT outperformance is not available to training.
+    assert result.returns.loc[dates[-1], "selected_assets"] == "SPY"
+    assert result.weights.loc[dates[-1], "SPY"] == 1.0
+    assert result.weights.loc[dates[-1], "TLT"] == 0.0
