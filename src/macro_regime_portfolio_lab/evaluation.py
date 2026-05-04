@@ -138,6 +138,58 @@ def run_regime_walk_forward(
     )
 
 
+def run_parameter_sensitivity_grid(
+    features: pd.DataFrame,
+    next_returns: pd.DataFrame,
+    *,
+    switch_score_buffers: list[float],
+    cost_bps_values: list[float],
+    min_regime_history: int = 24,
+    top_n: int = 3,
+    fallback_asset: str = "SHY",
+) -> pd.DataFrame:
+    records = []
+    for switch_score_buffer in switch_score_buffers:
+        for cost_bps in cost_bps_values:
+            result = run_regime_walk_forward(
+                features,
+                next_returns,
+                min_regime_history=min_regime_history,
+                top_n=top_n,
+                fallback_asset=fallback_asset,
+                cost_bps=cost_bps,
+                switch_score_buffer=switch_score_buffer,
+            )
+            strategy_net = result.metrics["regime_diagnostic_net"]
+            equal_weight_net = result.metrics["equal_weight_net"]
+            records.append(
+                {
+                    "switch_score_buffer": switch_score_buffer,
+                    "cost_bps": cost_bps,
+                    "strategy_net_annualized_return": strategy_net["annualized_return"],
+                    "strategy_net_volatility": strategy_net["annualized_volatility"],
+                    "strategy_net_sharpe": strategy_net["sharpe_ratio"],
+                    "strategy_net_max_drawdown": strategy_net["max_drawdown"],
+                    "equal_weight_net_annualized_return": equal_weight_net[
+                        "annualized_return"
+                    ],
+                    "equal_weight_net_volatility": equal_weight_net[
+                        "annualized_volatility"
+                    ],
+                    "equal_weight_net_sharpe": equal_weight_net["sharpe_ratio"],
+                    "equal_weight_net_max_drawdown": equal_weight_net["max_drawdown"],
+                    "average_strategy_turnover": result.returns[
+                        "strategy_turnover"
+                    ].mean(),
+                    "average_equal_weight_turnover": result.returns[
+                        "equal_weight_turnover"
+                    ].mean(),
+                    "months": len(result.returns),
+                }
+            )
+    return pd.DataFrame.from_records(records)
+
+
 def select_assets_from_history(
     historical_returns: pd.DataFrame,
     asset_columns: list[str],

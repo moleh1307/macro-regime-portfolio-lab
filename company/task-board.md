@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-012 - Run parameter sensitivity grid.
+- MRPL-013 - Review regime definition.
 
 ## Waiting User Decision
 
@@ -25,6 +25,7 @@
 - MRPL-009 - Add transaction cost and turnover diagnostics.
 - MRPL-010 - Refine diagnostic allocation rule.
 - MRPL-011 - Add turnover control and cost sensitivity review.
+- MRPL-012 - Run parameter sensitivity grid.
 
 ## Blocked
 

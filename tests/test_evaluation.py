@@ -7,6 +7,7 @@ from macro_regime_portfolio_lab.evaluation import (
     build_next_month_returns,
     calculate_turnover,
     rank_assets_by_risk_adjusted_history,
+    run_parameter_sensitivity_grid,
     run_regime_walk_forward,
     turnover_cost,
 )
@@ -157,3 +158,29 @@ def test_switch_buffer_accepts_large_score_improvement() -> None:
     )
 
     assert selected == ["QQQ"]
+
+
+def test_parameter_sensitivity_grid_returns_one_row_per_setting() -> None:
+    dates = pd.date_range("2020-01-31", periods=4, freq="ME")
+    features = pd.DataFrame({"regime": ["same", "same", "same", "same"]}, index=dates)
+    next_returns = pd.DataFrame(
+        {"SPY": [0.01, 0.02, 0.03, 0.04], "TLT": [0.01, 0.01, 0.01, 0.01]},
+        index=dates,
+    )
+
+    grid = run_parameter_sensitivity_grid(
+        features,
+        next_returns,
+        switch_score_buffers=[0.0, 0.1],
+        cost_bps_values=[0.0, 10.0],
+        min_regime_history=1,
+        top_n=1,
+    )
+
+    assert len(grid) == 4
+    assert {
+        "switch_score_buffer",
+        "cost_bps",
+        "strategy_net_sharpe",
+        "average_strategy_turnover",
+    }.issubset(grid.columns)
