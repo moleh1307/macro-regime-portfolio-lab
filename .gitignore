@@ -1,0 +1,18 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Cached public data is reproducible output and should not be committed.
+data/raw/**
+data/interim/**
+data/processed/**
+
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!artifacts/reports/.gitkeep
+!artifacts/figures/.gitkeep

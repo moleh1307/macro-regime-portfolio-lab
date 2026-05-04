@@ -1,0 +1,40 @@
+[project]
+name = "macro-regime-portfolio-lab"
+version = "0.1.0"
+description = "Reproducible quant research lab for macro-regime ETF allocation using public data."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jinja2>=3.1.4",
+    "matplotlib>=3.9.0",
+    "numpy>=2.0.0",
+    "pandas>=2.2.2",
+    "pyyaml>=6.0.2",
+    "scikit-learn>=1.5.0",
+    "statsmodels>=0.14.2",
+    "yfinance>=0.2.40",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2.0",
+    "ruff>=0.5.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/macro_regime_portfolio_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
