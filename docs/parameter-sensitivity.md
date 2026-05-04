@@ -47,14 +47,18 @@ The table includes:
 
 ## Observed Result
 
+Post-MRPL-014 update: the grid was regenerated after the stricter growth regime
+definition became the milestone default.
+
 The grid produced 20 rows: 5 switch-score buffers by 4 transaction-cost assumptions.
 
 Main findings:
 
-- every tested regime-diagnostic setting had lower net Sharpe than equal weight;
-- best regime-diagnostic net Sharpe was 0.6633 at buffer 0.00 and 0 bps cost;
+- twelve of twenty tested regime-diagnostic settings beat equal weight on net Sharpe;
+- best regime-diagnostic net Sharpe was 0.9821 at buffer 0.50 and 0 bps cost;
 - equal-weight net Sharpe at 0 bps was 0.6903;
-- increasing the switch-score buffer usually reduced turnover but did not reliably improve risk-adjusted diagnostics;
-- the 0.50 buffer had the lowest average turnover, 0.0128, but worse drawdown than equal weight.
+- the current default row, buffer 0.10 and 5 bps cost, had regime net Sharpe 0.7392 versus equal-weight net Sharpe 0.6901;
+- higher buffers reduced turnover and improved risk-adjusted diagnostics in this sample;
+- the 0.50 buffer had average monthly turnover 0.0593 and the strongest grid metrics.
 
-This confirms the current allocation rule is fragile. Do not tune the buffer based on this grid. The next useful work is to improve the regime definition or add a stronger benchmark/evaluation split, not to optimize the switch buffer.
+This is a promising diagnostic result, but it also creates a parameter-dependence warning. Do not tune the buffer based on this grid. The next useful work is to test subperiod stability, stress-period attribution, uncertainty around Sharpe differences, and additional simple benchmarks before strengthening any public performance language.

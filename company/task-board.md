@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-015 - Review post-stricter-regime diagnostics.
+- MRPL-016 - Add robustness review suite.
 
 ## Waiting User Decision
 
@@ -28,6 +28,7 @@
 - MRPL-012 - Run parameter sensitivity grid.
 - MRPL-013 - Review regime definition.
 - MRPL-014 - Implement stricter growth regime definition.
+- MRPL-015 - Review post-stricter-regime diagnostics.
 
 ## Blocked
 

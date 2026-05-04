@@ -74,6 +74,8 @@ See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
 The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
 The current walk-forward pipeline produces a diagnostic report and aligned return/weight tables. It is a protocol check, not a robustness claim.
 
+The current regime diagnostic review is in [Post-Stricter-Regime Diagnostic Review](docs/post-stricter-regime-diagnostic-review.md). It treats the stronger post-change metrics as promising but not claim-grade until robustness checks are added.
+
 ## License
 
 MIT License.
