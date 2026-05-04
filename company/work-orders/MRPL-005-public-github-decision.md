@@ -1,8 +1,8 @@
 # MRPL-005 - Decide Public GitHub Creation Push And License
 
 - Owner role: Founder / Chief of Staff
-- Status: active
-- Lifecycle state: Active
+- Status: done
+- Lifecycle state: Done
 - Risk lane: high-risk
 - Canonical artifact: future GitHub repo/remote
 
@@ -26,6 +26,13 @@ Decide the public launch boundary:
 
 - Melih delegated the launch choice.
 - Founder selected public GitHub repo with MIT license.
+- Added MIT license and committed `8883ba4 Add MIT license for public launch`.
+- Created public GitHub repo: `https://github.com/moleh1307/macro-regime-portfolio-lab`.
+- Pushed `main` to `origin/main`.
+- `gh repo view` verified visibility `PUBLIC`, default branch `main`, and license `MIT License`.
+- `git status --short --branch` showed `main...origin/main` with no uncommitted files.
+- `git remote -v` verified `origin` as `https://github.com/moleh1307/macro-regime-portfolio-lab.git`.
+- `git ls-remote --heads origin main` returned commit `8883ba44975284320e24895754cbee708bdc7613`.
 
 ## Blocker / Decision Needed
 
@@ -33,4 +40,4 @@ Decide the public launch boundary:
 
 ## Closeout State
 
-- Active.
+- Done.
