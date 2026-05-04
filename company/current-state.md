@@ -3,7 +3,7 @@
 ## Capsule
 
 - Objective: Build the reproducible foundation for Macro Regime Portfolio Lab.
-- Latest status: MRPL-008 walk-forward evaluation protocol implemented, verified, and ready to push.
+- Latest status: MRPL-008 walk-forward evaluation protocol implemented, verified, and pushed.
 - Operating mode: build.
 - Current milestone: Milestone 2 - first point-in-time regime features and walk-forward evaluation protocol.
 - Canonical workspace/repo: `/Users/melihkarakose/Projects/Active/macro-regime-portfolio-lab`; `https://github.com/moleh1307/macro-regime-portfolio-lab`
@@ -20,4 +20,4 @@
 - Missing / uncertain: exact performance implications of the first regime design; current walk-forward result is diagnostic only and requires robustness checks before public claims.
 - Risk boundary: no credentials, paid data, live trading, or release tag without explicit boundary check.
 - Approval lane: autonomous for initial public repo creation/push after Melih delegated the choice; confirmation needed for future release tags or changing license.
-- Verification path: completed `uv run pytest`, `uv run ruff check .`, public-data manifest inspection, baseline report inspection, feature manifest inspection, walk-forward report inspection, local git commit check, GitHub repo metadata check, remote tracking check, `git ls-remote` check, milestone 2 planning push verification, and MRPL-007 push verification.
+- Verification path: completed `uv run pytest`, `uv run ruff check .`, public-data manifest inspection, baseline report inspection, feature manifest inspection, walk-forward report inspection, local git commit check, GitHub repo metadata check, remote tracking check, `git ls-remote` check, milestone 2 planning push verification, MRPL-007 push verification, and MRPL-008 push verification.
