@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-013 - Review regime definition.
+- MRPL-014 - Implement stricter growth regime definition.
 
 ## Waiting User Decision
 
@@ -26,6 +26,7 @@
 - MRPL-010 - Refine diagnostic allocation rule.
 - MRPL-011 - Add turnover control and cost sensitivity review.
 - MRPL-012 - Run parameter sensitivity grid.
+- MRPL-013 - Review regime definition.
 
 ## Blocked
 
