@@ -75,7 +75,7 @@ See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
 The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
 The current walk-forward pipeline produces a diagnostic report and aligned return/weight tables. It is a protocol check, not a robustness claim.
 
-The current regime diagnostic review is in [Post-Stricter-Regime Diagnostic Review](docs/post-stricter-regime-diagnostic-review.md), with follow-up robustness checks in [Robustness Review](docs/robustness-review.md). The robustness review treats the strategy evidence as promising research scaffolding, not a robust outperformance claim.
+The current regime diagnostic review is in [Post-Stricter-Regime Diagnostic Review](docs/post-stricter-regime-diagnostic-review.md), with follow-up robustness checks in [Robustness Review](docs/robustness-review.md). The next evidence boundary is defined in [Validation Protocol](docs/validation-protocol.md). These artifacts treat the strategy evidence as promising research scaffolding, not a robust outperformance claim.
 
 ## License
 

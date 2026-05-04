@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-017 - Design validation protocol.
+- MRPL-018 - Implement validation protocol.
 
 ## Waiting User Decision
 
@@ -30,6 +30,7 @@
 - MRPL-014 - Implement stricter growth regime definition.
 - MRPL-015 - Review post-stricter-regime diagnostics.
 - MRPL-016 - Add robustness review suite.
+- MRPL-017 - Design validation protocol.
 
 ## Blocked
 
