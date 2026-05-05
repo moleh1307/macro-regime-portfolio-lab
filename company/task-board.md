@@ -6,11 +6,11 @@
 
 ## Ready
 
-- MRPL-027 - Final public repo readiness check.
+- None.
 
 ## Waiting User Decision
 
-- None.
+- Choose next direction: formal release/tag, milestone 3, wait for fresh monitoring data, or pause.
 
 ## Done
 
@@ -40,6 +40,7 @@
 - MRPL-024 - Implement fresh-data-forward monitoring report scaffold.
 - MRPL-025 - Review monitoring scaffold and milestone 2 boundary.
 - MRPL-026 - Polish public README and docs navigation.
+- MRPL-027 - Final public repo readiness check.
 
 ## Blocked
 

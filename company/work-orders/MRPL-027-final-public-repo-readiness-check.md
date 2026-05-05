@@ -1,8 +1,8 @@
 # MRPL-027 - Final Public Repo Readiness Check
 
 - Owner role: Project Editor / QA
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/public-repo-readiness-check.md`
 
@@ -25,7 +25,14 @@ change quantitative outputs unless a defect is found.
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/public-repo-readiness-check.md`.
+- Confirmed README and docs navigation are coherent for public GitHub readers.
+- Checked local Markdown links in `README.md` and `docs/*.md`; all resolved.
+- Ran claim-boundary scan; forbidden language appears only in explicit boundary/negative-claim contexts.
+- Ran `uv run pytest`; 38 tests passed.
+- Ran `uv run ruff check .`; passed.
+- Verified remote `main` before closeout at `b6c10ed`.
+- No public-readiness blockers found.
 
 ## Blocker / Decision Needed
 
@@ -33,4 +40,4 @@ change quantitative outputs unless a defect is found.
 
 ## Closeout State
 
-- Ready.
+- Completed. Milestone 2 is presentation-ready as a reproducible research-process artifact. Next direction needs a user-level decision.
