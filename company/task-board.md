@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-023 - Design fresh-data-forward monitoring protocol.
+- MRPL-024 - Implement fresh-data-forward monitoring report scaffold.
 
 ## Waiting User Decision
 
@@ -36,6 +36,7 @@
 - MRPL-020 - Design turnover stability protocol.
 - MRPL-021 - Implement turnover stability protocol.
 - MRPL-022 - Review turnover stability results.
+- MRPL-023 - Design fresh-data-forward monitoring protocol.
 
 ## Blocked
 
