@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-025 - Review monitoring scaffold and milestone 2 boundary.
+- MRPL-026 - Polish public README and docs navigation.
 
 ## Waiting User Decision
 
@@ -38,6 +38,7 @@
 - MRPL-022 - Review turnover stability results.
 - MRPL-023 - Design fresh-data-forward monitoring protocol.
 - MRPL-024 - Implement fresh-data-forward monitoring report scaffold.
+- MRPL-025 - Review monitoring scaffold and milestone 2 boundary.
 
 ## Blocked
 

@@ -75,6 +75,8 @@ The next milestone adds the first regime-aware research layer:
 
 See [Milestone 2 Plan](docs/milestone-2-regime-plan.md).
 
+For the current milestone interpretation, see [Milestone 2 Research Summary](docs/milestone-2-research-summary.md).
+
 The current feature pipeline produces `data/processed/monthly_features.csv` and a matching manifest from cached raw data.
 The current walk-forward pipeline produces a diagnostic report and aligned return/weight tables. It is a protocol check, not a robustness claim.
 

@@ -1,8 +1,8 @@
 # MRPL-025 - Review Monitoring Scaffold and Milestone 2 Boundary
 
 - Owner role: Quant Researcher / Project Editor
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/milestone-2-research-summary.md`
 
@@ -27,7 +27,12 @@ boundary, turnover-stability repair, and forward-monitoring scaffold.
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/milestone-2-research-summary.md`.
+- Confirmed milestone 2 is coherent as a public research-process artifact, not a strategy/outperformance artifact.
+- Summarized the feature pipeline, walk-forward diagnostics, robustness checks, locked validation, turnover-stability repair, and fresh-forward monitoring scaffold.
+- Preserved claim boundaries: no robust outperformance, validated strategy, investment-ready allocation, live trading system, alpha model, or fresh validation claim after post-holdout review.
+- Identified repo hygiene opportunities: docs index, README status table, short "how to read results" section, and possible notebook examples later.
+- Updated README with a direct link to the milestone 2 summary.
 
 ## Blocker / Decision Needed
 
@@ -35,4 +40,4 @@ boundary, turnover-stability repair, and forward-monitoring scaffold.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work should focus on light public-facing README/docs polish rather than more methodology machinery.
