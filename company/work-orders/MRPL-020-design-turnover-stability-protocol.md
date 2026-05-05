@@ -1,8 +1,8 @@
 # MRPL-020 - Design Turnover Stability Protocol
 
 - Owner role: Quant Researcher / QA Lead
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/turnover-stability-protocol.md`
 
@@ -28,7 +28,15 @@ future validation attempts less vulnerable to turnover instability.
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/turnover-stability-protocol.md`.
+- Preserved MRPL-018 as the first locked validation result and partial validation.
+- Defined that future 2022-forward runs must be labeled `post-holdout-review diagnostic`.
+- Defined research-window-only turnover stability diagnostics and initial thresholds.
+- Defined a second-cycle selection objective that penalizes turnover instability and allocation complexity.
+- Identified simple candidate rule families: top-2, top-3, stricter replacement margin, max monthly turnover guard, and defensive sleeve cap.
+- Kept benchmark panel unchanged: equal weight, static SPY/TLT 60/40, SHY.
+- Added README pointer to the turnover stability protocol.
+- Created MRPL-021 implementation work order.
 
 ## Blocker / Decision Needed
 
@@ -36,4 +44,4 @@ future validation attempts less vulnerable to turnover instability.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work is implementation of the turnover stability protocol.

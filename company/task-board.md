@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-020 - Design turnover stability protocol.
+- MRPL-021 - Implement turnover stability protocol.
 
 ## Waiting User Decision
 
@@ -33,6 +33,7 @@
 - MRPL-017 - Design validation protocol.
 - MRPL-018 - Implement validation protocol.
 - MRPL-019 - Review validation results.
+- MRPL-020 - Design turnover stability protocol.
 
 ## Blocked
 
