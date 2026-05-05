@@ -55,7 +55,7 @@ Post-holdout-review metrics:
 | regime_diagnostic_net | 0.0563 | 0.0687 | 0.8194 | -0.1019 | 0.0435 |
 | equal_weight_net | 0.0831 | 0.1005 | 0.8266 | -0.1487 | 0.0000 |
 | static_60_40_net | 0.0446 | 0.1397 | 0.3194 | -0.2069 | |
-| shy_net | 0.0237 | 0.0214 | 1.1053 | -0.0358 | |
+| shy_net | 0.0237 | 0.0214 | 1.1052 | -0.0358 | |
 
 The second-cycle rule no longer beats equal weight on net Sharpe in the
 2022-forward diagnostic slice. It still beats static 60/40 on Sharpe and

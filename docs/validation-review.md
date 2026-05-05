@@ -33,7 +33,7 @@ Locked validation metrics:
 | regime_diagnostic_net | 0.1084 | 0.0993 | 1.0911 | -0.1404 | 0.2304 |
 | equal_weight_net | 0.0831 | 0.1005 | 0.8266 | -0.1487 | 0.0000 |
 | static_60_40_net | 0.0446 | 0.1397 | 0.3194 | -0.2069 | |
-| shy_net | 0.0237 | 0.0214 | 1.1053 | -0.0358 | |
+| shy_net | 0.0237 | 0.0214 | 1.1052 | -0.0358 | |
 
 ## Protocol Outcome
 

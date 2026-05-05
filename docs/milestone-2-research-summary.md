@@ -83,7 +83,7 @@ The first locked validation run was a partial pass:
 | regime_diagnostic_net | 1.0911 | -0.1404 | 0.2304 |
 | equal_weight_net | 0.8266 | -0.1487 | 0.0000 |
 | static_60_40_net | 0.3194 | -0.2069 | |
-| shy_net | 1.1053 | -0.0358 | |
+| shy_net | 1.1052 | -0.0358 | |
 
 It beat equal weight and static 60/40 on several metrics, but did not clear the
 full benchmark panel because SHY had slightly higher Sharpe and much lower
@@ -112,7 +112,7 @@ This reduced the inspected 2022-forward average monthly turnover from 0.2304 to
 
 It did not strengthen the performance evidence. In the same inspected period,
 the turnover-stable branch had net Sharpe 0.8194 versus equal weight 0.8266 and
-SHY 1.1053. The correct interpretation is narrow: the branch reduced the known
+SHY 1.1052. The correct interpretation is narrow: the branch reduced the known
 turnover failure mode and is a better research default for future monitoring.
 
 ### Fresh Forward Monitoring

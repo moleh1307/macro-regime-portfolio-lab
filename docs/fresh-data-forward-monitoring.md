@@ -17,7 +17,7 @@ No completed forward-monitoring return exists in the current cached data. The fi
 | source | current_end |
 | --- | --- |
 | yfinance_adjusted_prices | 2026-05-04 |
-| fred_macro_cache | 2026-05-01 |
+| fred_macro_cache | 2026-05-04 |
 | monthly_features | 2026-04-30 |
 
 ## Monitoring Boundary

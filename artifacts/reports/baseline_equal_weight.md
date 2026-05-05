@@ -20,7 +20,7 @@ strategy and should not be interpreted as an outperformance claim.
 | --- | ---: |
 | Annualized Return | 0.0735 |
 | Annualized Volatility | 0.1147 |
-| Sharpe Ratio | 0.6404 |
+| Sharpe Ratio | 0.6408 |
 | Max Drawdown | -0.3240 |
 
 ## Caveats
