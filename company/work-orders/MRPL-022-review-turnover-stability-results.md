@@ -1,8 +1,8 @@
 # MRPL-022 - Review Turnover Stability Results
 
 - Owner role: Quant Researcher / Methodology Reviewer
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/turnover-stability-review.md`
 
@@ -31,7 +31,13 @@ into an outperformance claim.
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/turnover-stability-review.md`.
+- Reviewed MRPL-021 as a post-holdout-review diagnostic, not fresh validation.
+- Compared MRPL-021 turnover against MRPL-018: average monthly turnover fell from 0.2304 to 0.0435 in the 2022-forward diagnostic slice.
+- Preserved the weaker performance result: MRPL-021 regime diagnostic net Sharpe 0.8194 trails equal weight 0.8266 and SHY 1.1053.
+- Decided MRPL-021 should be treated as the current research-branch default for future methodology work, not as a validated strategy.
+- Identified fresh-data-forward monitoring protocol as the next methodology task.
+- Updated README with a link to the review.
 
 ## Blocker / Decision Needed
 
@@ -39,4 +45,4 @@ into an outperformance claim.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work should design a fresh-data-forward monitoring protocol.
