@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-026 - Polish public README and docs navigation.
+- MRPL-027 - Final public repo readiness check.
 
 ## Waiting User Decision
 
@@ -39,6 +39,7 @@
 - MRPL-023 - Design fresh-data-forward monitoring protocol.
 - MRPL-024 - Implement fresh-data-forward monitoring report scaffold.
 - MRPL-025 - Review monitoring scaffold and milestone 2 boundary.
+- MRPL-026 - Polish public README and docs navigation.
 
 ## Blocked
 

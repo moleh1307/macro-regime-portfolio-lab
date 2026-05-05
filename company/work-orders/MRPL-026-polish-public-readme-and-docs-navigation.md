@@ -1,8 +1,8 @@
 # MRPL-026 - Polish Public README and Docs Navigation
 
 - Owner role: Project Editor
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `README.md`
 
@@ -23,7 +23,11 @@ This is a public-facing polish task, not a methodology change.
 
 ## Verification Evidence
 
-- Pending.
+- Added a compact status table to `README.md`.
+- Added a "How To Read Results" section for non-quant GitHub readers.
+- Added `docs/index.md` to reduce README link density and improve navigation.
+- Preserved claim boundary: no robust outperformance, validated strategy, investment-ready allocation, live trading, or alpha language.
+- Did not change strategy logic, data, or generated quantitative artifacts.
 
 ## Blocker / Decision Needed
 
@@ -31,4 +35,4 @@ This is a public-facing polish task, not a methodology change.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work should run a final public-repo readiness check.
