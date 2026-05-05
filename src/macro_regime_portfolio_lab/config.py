@@ -53,3 +53,9 @@ def load_turnover_stability_config(
     path: Path = CONFIG_DIR / "turnover_stability.yml",
 ) -> dict[str, Any]:
     return read_yaml(path)
+
+
+def load_fresh_forward_monitoring_config(
+    path: Path = CONFIG_DIR / "fresh_forward_monitoring.yml",
+) -> dict[str, Any]:
+    return read_yaml(path)

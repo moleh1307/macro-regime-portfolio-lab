@@ -1,0 +1,1 @@
+date,regime,strategy_return,strategy_turnover,strategy_cost,strategy_return_net,equal_weight_return,equal_weight_turnover,equal_weight_cost,equal_weight_return_net,training_observations,switch_score_buffer,selected_assets,static_60_40_return_net,shy_return_net

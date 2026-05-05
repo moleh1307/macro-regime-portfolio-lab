@@ -1,0 +1,2 @@
+monitoring_rows,latest_signal_date,latest_realized_return_date,strategy_cumulative_return,equal_weight_cumulative_return,static_60_40_cumulative_return,shy_cumulative_return,strategy_max_drawdown,average_monthly_turnover,status
+0,,,,,,,,,no_completed_forward_monitoring_returns

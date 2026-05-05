@@ -1,0 +1,2 @@
+signal_date,warning,value,threshold,status
+2026-04-30,data_freshness_warning,pending_completed_next_month_return,complete_next_month_price_observation,diagnostic_warning

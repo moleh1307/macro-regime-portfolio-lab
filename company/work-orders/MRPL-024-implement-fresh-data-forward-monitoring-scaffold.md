@@ -1,8 +1,8 @@
 # MRPL-024 - Implement Fresh-Data-Forward Monitoring Report Scaffold
 
 - Owner role: Data Engineer / Quant Researcher
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/fresh-data-forward-monitoring.md`
 
@@ -28,7 +28,19 @@ pretend partial May 2026 data creates a completed forward-monitoring return.
 
 ## Verification Evidence
 
-- Pending.
+- Added `configs/fresh_forward_monitoring.yml`.
+- Added `src/macro_regime_portfolio_lab/fresh_forward.py`.
+- Added `scripts/run_fresh_forward_monitoring.py`.
+- Added `tests/test_fresh_forward.py`.
+- Generated `docs/fresh-data-forward-monitoring.md`.
+- Generated `artifacts/reports/fresh_forward_monitoring_returns.csv`.
+- Generated `artifacts/reports/fresh_forward_monitoring_metrics.csv`.
+- Generated `artifacts/reports/fresh_forward_monitoring_warnings.csv`.
+- Generated `artifacts/reports/fresh_forward_monitoring_pending_signals.csv`.
+- Current scaffold status: 0 completed forward-monitoring returns, 1 pending signal row at 2026-04-30, and a data-freshness warning.
+- `uv run pytest` passed with 38 tests.
+- `uv run ruff check .` passed.
+- `uv run python scripts/run_fresh_forward_monitoring.py` completed and regenerated the monitoring report/artifacts.
 
 ## Blocker / Decision Needed
 
@@ -36,4 +48,4 @@ pretend partial May 2026 data creates a completed forward-monitoring return.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work should review the monitoring scaffold and decide whether milestone 2 needs a concise public synthesis.

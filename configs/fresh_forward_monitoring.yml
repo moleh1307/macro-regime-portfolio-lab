@@ -1,0 +1,20 @@
+boundary:
+  last_inspected_signal: "2026-03-31"
+  first_monitoring_signal: "2026-04-30"
+
+frozen_rule:
+  switch_score_buffer: 0.50
+  min_regime_history: 12
+  top_n: 3
+  max_monthly_turnover: 0.15
+  turnover_metric_warmup_months: 12
+  fallback_asset: SHY
+  cost_bps: 5.0
+
+warnings:
+  turnover_spike: 0.15
+  turnover_drift_6m_average: 0.10
+  drawdown: -0.15
+  cumulative_equal_weight_lag: -0.10
+  cumulative_shy_lag: -0.10
+  repeated_benchmark_lag_months: 6
