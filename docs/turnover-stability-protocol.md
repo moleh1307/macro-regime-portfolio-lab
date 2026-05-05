@@ -76,6 +76,12 @@ Required turnover-stability diagnostics:
 | turnover volatility | standard deviation of monthly turnover | <= 0.18 |
 | rolling turnover max | max 12-month rolling average turnover | <= 0.18 |
 
+Implementation note: the turnover-stability screen may exclude an explicit
+initial deployment warmup from these diagnostics. The warmup must be configured
+before running the screen and shown in the generated candidate grid, because the
+first portfolio deployment is not the same failure mode as recurring allocation
+instability.
+
 Candidate rules failing any hard threshold should be rejected before ranking.
 
 The thresholds are deliberately conservative and should be reviewed only inside

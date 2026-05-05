@@ -46,6 +46,7 @@ def run_regime_walk_forward(
     fallback_asset: str = "SHY",
     cost_bps: float = 5.0,
     switch_score_buffer: float = 0.10,
+    max_monthly_turnover: float | None = None,
 ) -> WalkForwardResult:
     aligned_features, aligned_returns = align_features_and_next_returns(features, next_returns)
     asset_columns = list(aligned_returns.columns)
@@ -75,6 +76,11 @@ def run_regime_walk_forward(
             buffer=switch_score_buffer,
         )
         weight = equal_weight(selected_assets, asset_columns)
+        weight = apply_turnover_cap(
+            previous_weight=previous_strategy_weight,
+            target_weight=weight,
+            max_turnover=max_monthly_turnover,
+        )
         realized_returns = aligned_returns.loc[signal_date].fillna(0.0)
         strategy_return = float((weight * realized_returns).sum())
         benchmark_weight = equal_weight(
@@ -262,6 +268,22 @@ def equal_weight(selected_assets: list[str], asset_columns: list[str]) -> pd.Ser
 def calculate_turnover(previous_weight: pd.Series, current_weight: pd.Series) -> float:
     aligned_previous, aligned_current = previous_weight.align(current_weight, fill_value=0.0)
     return float((aligned_current - aligned_previous).abs().sum() / 2.0)
+
+
+def apply_turnover_cap(
+    previous_weight: pd.Series,
+    target_weight: pd.Series,
+    max_turnover: float | None,
+) -> pd.Series:
+    if max_turnover is None:
+        return target_weight
+    if previous_weight.sum() == 0:
+        return target_weight
+    turnover = calculate_turnover(previous_weight, target_weight)
+    if turnover <= max_turnover or turnover == 0:
+        return target_weight
+    scale = max_turnover / turnover
+    return previous_weight + (target_weight - previous_weight) * scale
 
 
 def turnover_cost(turnover: float, cost_bps: float) -> float:

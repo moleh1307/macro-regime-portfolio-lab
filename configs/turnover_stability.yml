@@ -1,0 +1,40 @@
+split:
+  research_start: "2008-05-31"
+  research_end: "2021-12-31"
+  post_holdout_start: "2022-01-31"
+
+selection:
+  rolling_window_months: 36
+  cost_bps: 5.0
+  fallback_asset: SHY
+  high_turnover_threshold: 0.25
+  turnover_metric_warmup_months: 12
+  hard_thresholds:
+    average_turnover: 0.10
+    turnover_p90: 0.35
+    turnover_p95: 0.50
+    high_turnover_month_share: 0.20
+    turnover_volatility: 0.18
+    rolling_12m_average_turnover_max: 0.18
+  objective_penalties:
+    turnover_instability: 0.50
+    allocation_complexity: 0.25
+  switch_score_buffers:
+    - 0.20
+    - 0.50
+    - 0.75
+    - 1.00
+  min_regime_history_values:
+    - 12
+    - 24
+    - 36
+  top_n_values:
+    - 2
+    - 3
+  max_monthly_turnover_values:
+    - 0.15
+    - 0.20
+    - 0.25
+
+report:
+  label: post-holdout-review diagnostic run

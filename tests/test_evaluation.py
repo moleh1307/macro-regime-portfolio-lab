@@ -4,6 +4,7 @@ import pytest
 from macro_regime_portfolio_lab.evaluation import (
     align_features_and_next_returns,
     apply_switch_buffer,
+    apply_turnover_cap,
     build_next_month_returns,
     calculate_turnover,
     rank_assets_by_risk_adjusted_history,
@@ -100,6 +101,18 @@ def test_turnover_and_cost_are_half_l1_weight_change() -> None:
 
     assert turnover == pytest.approx(0.5)
     assert turnover_cost(turnover, cost_bps=10.0) == pytest.approx(0.0005)
+
+
+def test_turnover_cap_scales_weight_change_without_changing_default_behavior() -> None:
+    previous = pd.Series({"SPY": 1.0, "TLT": 0.0})
+    target = pd.Series({"SPY": 0.0, "TLT": 1.0})
+
+    capped = apply_turnover_cap(previous, target, max_turnover=0.25)
+    uncapped = apply_turnover_cap(previous, target, max_turnover=None)
+
+    assert calculate_turnover(previous, capped) == pytest.approx(0.25)
+    assert capped.sum() == pytest.approx(1.0)
+    pd.testing.assert_series_equal(uncapped, target)
 
 
 def test_walk_forward_records_net_returns_after_turnover_costs() -> None:

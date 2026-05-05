@@ -47,3 +47,9 @@ def load_regime_feature_config(
 
 def load_validation_config(path: Path = CONFIG_DIR / "validation.yml") -> dict[str, Any]:
     return read_yaml(path)
+
+
+def load_turnover_stability_config(
+    path: Path = CONFIG_DIR / "turnover_stability.yml",
+) -> dict[str, Any]:
+    return read_yaml(path)
