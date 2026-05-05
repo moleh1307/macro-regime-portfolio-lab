@@ -1,8 +1,8 @@
 # MRPL-019 - Review Validation Results
 
 - Owner role: Quant Researcher / QA Lead
-- Status: ready
-- Lifecycle state: Ready
+- Status: done
+- Lifecycle state: Completed
 - Risk lane: normal
 - Canonical artifact: `docs/validation-review.md`
 
@@ -26,7 +26,13 @@ much lower drawdown.
 
 ## Verification Evidence
 
-- Pending.
+- Created `docs/validation-review.md`.
+- Summarized MRPL-018 locked validation as a partial pass: beats equal weight and static 60/40, but does not clear SHY on Sharpe/drawdown.
+- Preserved claim boundary: no robust outperformance, no validated strategy, no tradeable-signal language.
+- Reviewed turnover issue: selected configuration had 0.0991 average monthly turnover in the research window but 0.2304 in the locked validation window.
+- Decided next methodology priority: allocation-rule simplicity and turnover stability before benchmark-panel changes or further regime definition work.
+- Added README pointer to the validation review.
+- Created MRPL-020 next work order.
 
 ## Blocker / Decision Needed
 
@@ -34,4 +40,4 @@ much lower drawdown.
 
 ## Closeout State
 
-- Ready.
+- Completed. Next work should design a second-cycle protocol focused on turnover stability and allocation-rule simplicity.

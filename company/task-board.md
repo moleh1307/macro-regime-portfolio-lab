@@ -6,7 +6,7 @@
 
 ## Ready
 
-- MRPL-019 - Review validation results.
+- MRPL-020 - Design turnover stability protocol.
 
 ## Waiting User Decision
 
@@ -32,6 +32,7 @@
 - MRPL-016 - Add robustness review suite.
 - MRPL-017 - Design validation protocol.
 - MRPL-018 - Implement validation protocol.
+- MRPL-019 - Review validation results.
 
 ## Blocked
 
